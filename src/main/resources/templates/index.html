@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Word List</title>
+    </head>
+    <body>
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>WORD</th>
+                <th>MEANING</th>
+                <th>EXAMPLE</th>
+            </tr>
+            <tr th:each="user:${users}">
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.email}"></td>
+            </tr>
+        </table>
+
+
+<a th:href="@{/demo/list(page=${pageNum - 1})}" >previous</a>
+<a th:href="@{/demo/list(page=${pageNum})}" th:text="${pageNum}"></a>
+<a th:href="@{/demo/list(page=${pageNum + 1})}" >next</a>
+<p th:text="${page.getPageable().hasPrevious()}"></p>
+    </body>
+</html>
